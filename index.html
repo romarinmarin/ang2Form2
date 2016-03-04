@@ -1,0 +1,39 @@
+<html>
+<head>
+    <base href="/">
+    <title>Angular 2 First Look Boilerplate</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <ng2-app>Loading...</ng2-app>
+  <!-- Load Angular 2 Core libraries -->
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.js"></script>
+  <!-- Load Bootstrap and Jquery -->
+  <script src="lib/jquery/jquery.min.js" charset="utf-8"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="build/assets/css/app.css">
+  <!-- Configure SystemJS -->
+  <script>
+      System.config({
+          packages: {
+              build: {
+                  format: 'register',
+                  defaultExtension: 'js'
+              }
+          }
+      });
+      System.import('build/prod/boot')
+              .then(null, console.error.bind(console));
+  </script>
+</body>
+</html>
