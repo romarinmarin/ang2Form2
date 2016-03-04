@@ -1,3 +1,5 @@
+![alt text](./assets/images/index_image.png "Welcome Screen of Successful Installation")
+
 ## Description
 
 This is an Angular 2 Boilerplate featuring Gulp, SystemJS and Typescript. This package is **Angular 2 Beta 8** compatible.
@@ -8,6 +10,7 @@ This is an Angular 2 Boilerplate featuring Gulp, SystemJS and Typescript. This p
 * CSS Minification
 * Autoprefixer
 * Uglifier for JS
+* Automatic **image optimization**
 * Compile Typescript to JS
 * Watch task to reload any changes on Save
 * Lite Server for live-reload
