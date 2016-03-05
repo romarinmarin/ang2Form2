@@ -40,13 +40,7 @@ gulp.task("minify-images", function() {
              .pipe(gulp.dest(config.imagesOutputPath));
 });
 
-gulp.task('watch', function () {
-    gulp.watch(config.TsFilePath, ['compile-ts']);
-    gulp.watch(config.stylesFilePath, ['compile-styles']);
-    gulp.watch(config.imagesFilePath, ['minify-images']);
-});
-
-gulp.task("setup", function(){
+gulp.task("setup",["compile-ts","compile-styles","minify-images"], function(){
 
   gulp.src(config.bootstrapJSPath)
       .pipe(gulp.dest(config.bootstrapJSDestPath));
@@ -59,6 +53,12 @@ gulp.task("setup", function(){
 
   gulp.src(config.jQueryPath)
       .pipe(gulp.dest(config.jQueryDestPath));
+});
+
+gulp.task('watch', function () {
+    gulp.watch(config.TsFilePath, ['compile-ts']);
+    gulp.watch(config.stylesFilePath, ['compile-styles']);
+    gulp.watch(config.imagesFilePath, ['minify-images']);
 });
 
 gulp.task('default', ['watch']);
