@@ -16,7 +16,9 @@ gulp.task("compile-ts", function(){
   return gulp.src(config.TsFilePath)
              .pipe(sourcemaps.init())
              .pipe(typescript(tsProject))
-             .pipe(jsuglify())
+             .pipe(jsuglify({
+                mangle: false
+              }))
              .pipe(sourcemaps.write())
              .pipe(gulp.dest(config.tsOutputPath));
 });
