@@ -20,6 +20,12 @@ This is an Angular 2 Boilerplate featuring Gulp, SystemJS and Typescript. This p
 
 ### Usage
 
+#### Global Dependencies
+
+```
+npm install -g gulp
+```
+
 #### Initially
 ```
 npm install
@@ -39,6 +45,9 @@ npm run startup
 npm run serve # load lite-server
 gulp # for Gulp watcher
 ```
+### Issues
+
+gulp-uglify plugin breaks the app when mangle option is turned on (this is the default) thus in this boilerplate for time being it is turned off.
 
 ### Disclaimer
 
