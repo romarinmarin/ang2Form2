@@ -9,23 +9,36 @@ var gulp = require("gulp"),
     autoprefixer = require("autoprefixer"),
     ext_replace  = require("gulp-ext-replace"),
     imagemin = require("gulp-imagemin"),
-    jsuglify = require('gulp-uglify');
+    jsuglify = require('gulp-uglify'),
+    plumber = require("gulp-plumber");
 
 gulp.task("compile-ts", function(){
 
   return gulp.src(config.TsFilePath)
+             .pipe(plumber({
+              errorHandler: function (err) {
+                  console.log(err);
+                  this.emit('end');
+                }
+              }))
              .pipe(sourcemaps.init())
              .pipe(typescript(tsProject))
              .pipe(jsuglify({
                 mangle: false
               }))
-             .pipe(sourcemaps.write())
+             .pipe(sourcemaps.write("."))
              .pipe(gulp.dest(config.tsOutputPath));
 });
 
 gulp.task("compile-styles", function() {
 
     return gulp.src(config.stylesFilePath)
+               .pipe(plumber({
+                errorHandler: function (err) {
+                    console.log(err);
+                    this.emit('end');
+                  }
+                }))
                .pipe(sourcemaps.init())
                .pipe(postcss([precss,cssnano,autoprefixer]))
                .pipe(ext_replace(".css"))
@@ -36,6 +49,12 @@ gulp.task("compile-styles", function() {
 gulp.task("minify-images", function() {
 
   return gulp.src(config.imagesFilePath)
+             .pipe(plumber({
+              errorHandler: function (err) {
+                  console.log(err);
+                  this.emit('end');
+                }
+              }))
              .pipe(imagemin({
                 progressive: true
               }))
@@ -62,5 +81,7 @@ gulp.task('watch', function () {
     gulp.watch(config.stylesFilePath, ['compile-styles']);
     gulp.watch(config.imagesFilePath, ['minify-images']);
 });
+
+
 
 gulp.task('default', ['watch']);
