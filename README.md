@@ -8,6 +8,7 @@ This is an Angular 2 Boilerplate featuring Gulp, SystemJS and Typescript. This p
 
 * Includes Sass/Scss to CSS preprocessor
 * CSS Minification
+* CSS Concatenation
 * Autoprefixer
 * Uglifier for JS
 * Automatic **image optimization**

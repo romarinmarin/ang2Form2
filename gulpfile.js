@@ -10,7 +10,8 @@ var gulp = require("gulp"),
     ext_replace  = require("gulp-ext-replace"),
     imagemin = require("gulp-imagemin"),
     jsuglify = require('gulp-uglify'),
-    plumber = require("gulp-plumber");
+    plumber = require("gulp-plumber"),
+    concat = require("gulp-concat");
 
 gulp.task("compile-ts", function(){
 
@@ -43,6 +44,7 @@ gulp.task("compile-styles", function() {
                .pipe(postcss([precss,cssnano,autoprefixer]))
                .pipe(ext_replace(".css"))
                .pipe(sourcemaps.write())
+               .pipe(concat('app.css'))
                .pipe(gulp.dest(config.cssOutputPath));
 });
 
