@@ -76,7 +76,7 @@ gulp.task("setup",["compile-ts","compile-styles","minify-images"], function(){
       .pipe(gulp.dest(config.jQueryDestPath));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['compile-ts'] function () {
     gulp.watch(config.TsFilePath, ['compile-ts']);
     gulp.watch(config.stylesFilePath, ['compile-styles']);
     gulp.watch(config.imagesFilePath, ['minify-images']);
